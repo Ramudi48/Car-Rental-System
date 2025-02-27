@@ -225,7 +225,7 @@ class CarRentalSystem {
             } else if (choice == 3) {
                 break;
             } else {
-                System.out.println(".");
+                System.out.println("Invalid choice. Please enter a valid option.");
             }
         }
 
