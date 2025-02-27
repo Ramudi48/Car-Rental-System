@@ -171,6 +171,41 @@ class CarRentalSystem {
                         break;
                     }
                 }
+                if (selectedCar != null) {
+                    double totalPrice = selectedCar.calculatePrice(rentalDays);
+                    System.out.println("\n== Rental Information ==\n");
+                    System.out.println("Customer ID: " + newCustomer.getCustomerId());
+                    System.out.println("Customer Name: " + newCustomer.getName());
+                    System.out.println("Car: " + selectedCar.getBrand() + " " + selectedCar.getModel());
+                    System.out.println("Rental Days: " + rentalDays);
+                    System.out.printf("Total Price: $%.2f%n", totalPrice);
+
+                    System.out.print("\nConfirm rental (Y/N): ");
+                    String confirm = scanner.nextLine();
+
+                    if (confirm.equalsIgnoreCase("Y")) {
+                        rentCar(selectedCar, newCustomer, rentalDays);
+                        System.out.println("\nCar rented successfully.");
+                    } else {
+                        System.out.println("\nRental canceled.");
+                    }
+                } else {
+                    System.out.println("\nInvalid car selection or car not available for rent.");
+                }
+            } else if (choice == 2) {
+                System.out.println("\n== Return a Car ==\n");
+                System.out.print("Enter the car ID you want to return: ");
+                String carId = scanner.nextLine();
+
+                Car carToReturn = null;
+                for (Car car : cars) {
+                    if (car.getCarId().equals(carId) && !car.isAvailable()) {
+                        carToReturn = car;
+                        break;
+                    }
+                }
+
+
 
 
 
