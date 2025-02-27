@@ -204,6 +204,35 @@ class CarRentalSystem {
                         break;
                     }
                 }
+                if (carToReturn != null) {
+                    Customer customer = null;
+                    for (Rental rental : rentals) {
+                        if (rental.getCar() == carToReturn) {
+                            customer = rental.getCustomer();
+                            break;
+                        }
+                    }
+
+                    if (customer != null) {
+                        returnCar(carToReturn);
+                        System.out.println("Car returned successfully by " + customer.getName());
+                    } else {
+                        System.out.println("Car was not rented or rental information is missing.");
+                    }
+                } else {
+                    System.out.println("Invalid car ID or car is not rented.");
+                }
+            } else if (choice == 3) {
+                break;
+            } else {
+                System.out.println(".");
+            }
+        }
+
+        System.out.println("\nThank you for using the Car Rental System!");
+    }
+
+}
 
 
 
